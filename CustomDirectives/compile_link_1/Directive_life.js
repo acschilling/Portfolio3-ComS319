@@ -1,23 +1,5 @@
 var app = angular.module('test', []);
 
-app.factory("Sports", function(){
-	var sports =["Football","Basketball","Hockey"];
-	var players =["Tom Brady","Michael Jordan","Patrick Kane"];
-	var numbers =["12","23","88"];
-	
-	return{
-	all_sports: function(){
-			return sports;
-		},
-	all_players: function(){
-			return players;
-		},
-	all_numbers: function(){
-			return numbers;
-		}
-	};
-});
-
 app.directive('levelOne', function(){
     return {
       restrict: 'EA',
