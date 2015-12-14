@@ -1,59 +1,59 @@
 var app = angular.module('test', []);
 
-app.directive('levelOne', function(){
+app.directive('outer', function(){
     return {
       restrict: 'EA',
       compile: function(tElem, tAttrs){
-        console.log('levelOne: compile');
-		tElem.append('<div>1:levelOne</div>');
+        console.log('outer: compile');
+		tElem.append('<div>outer</div>');
         return {
           pre: function(scope, iElem, iAttrs){
-			scope.levelOne = "levelOne";
-            console.log('levelOne: pre link');
+			scope.last = "outer";
+            console.log('outer: pre link');
           },
           post: function(scope, iElem, iAttrs){
 			iAttrs.$set('style', 'display:block;border: 1px solid black;background:red ;');
 			iElem.append('<div>Done</div>');
-            console.log('levelOne: post link');
+            console.log('outer: post link');
           }
         }
       }
     }
   });  
-app.directive('levelTwo', function(){
+app.directive('middle', function(){
     return {
       restrict: 'EA',
       compile: function(tElem, tAttrs){
-        console.log('levelTwo: compile');
-		tElem.append('<div>2:levelTwo</div>');
+        console.log('middle: compile');
+		tElem.append('<div>middle</div>');
         return {
           pre: function(scope, iElem, iAttrs){
-			scope.levelTwo = "levelTwo";
-            console.log('levelTwo: pre link');
+			scope.middle = "middle";
+            console.log('middle: pre link');
           },
           post: function(scope, iElem, iAttrs){
 			iAttrs.$set('style', 'display:block;color:red;background:yellow');
-            console.log('levelTwo: post link');
+            console.log('middle: post link');
           }
         }
       }
     }
   });  
-app.directive('levelThree', function(){
+app.directive('inner', function(){
     return {
       restrict: 'EA',
       compile: function(tElem, tAttrs){
-        console.log('levelThree: compile');
-		tElem.append('<div>3:levelThree</div>');
+        console.log('inner: compile');
+		tElem.append('<div>inner</div>');
         return {
           pre: function(scope, iElem, iAttrs){
-			scope.levelThree = "levelThree";
-            console.log('levelThree: pre link');
+			scope.first = "inner";
+            console.log('inner: pre link');
           },
           post: function(scope, iElem, iAttrs){
-			iElem.append('<div>link '+scope.levelOne+' '+scope.levelTwo+' '+scope.levelThree+'</div>');
+			iElem.append('<div>link order: '+scope.first+' '+scope.middle+' '+scope.last+'</div>');
 			iAttrs.$set('style', 'display:block;color:white;background:blue');
-            console.log('levelThree: post link');
+            console.log('inner: post link');
           }
         }
       }
