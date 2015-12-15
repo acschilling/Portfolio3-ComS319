@@ -1,4 +1,4 @@
-var app = angular.module('test', []);
+var app = angular.module('lifecycle', []);
 
 app.directive('outer', function(){
     return {
