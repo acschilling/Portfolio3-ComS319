@@ -35,7 +35,7 @@ it('should be invalid if less than required min length', function() {
   expect(formValid.getText()).toContain('false');
 });
 
-//service style, probably the simplest one
+// Simple service
 myApp.service('helloWorldService', function() {
     this.welcome = function() {
         return "Welcome!"
@@ -43,7 +43,7 @@ myApp.service('helloWorldService', function() {
 });
 
 
-//provider style, full blown, configurable version     
+// Provider    
 myApp.provider('helloWorld', function() {
 
     this.name = 'Default';
@@ -62,11 +62,16 @@ myApp.provider('helloWorld', function() {
     };
 });
 
-//hey, we can configure a provider!            
+// Configure a provider            
 myApp.config(function(helloWorldProvider){
     helloWorldProvider.setName(user.name);
 });
-        
+
+
+// Example of an Injector
+var test = 'exampleInjector';
+var helloInjector = $injector.get('helloWorld');
+helloInjector(test);
 
 function MyCtrl($scope, helloWorldService, helloWorld) {
     
