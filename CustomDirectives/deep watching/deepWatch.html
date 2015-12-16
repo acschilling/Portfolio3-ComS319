@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="deepWatch">
+
+<head>
+    <title>Deep-watch</title>
+</head>
+<body ng-controller='deepWatchCtrl'>
+    Please fill out this form if you are interested in taking one of the following Computer Science courses!! This form will help us identify how much room to make available per course. <br>
+	<br><br>(If you haven't already filled out the form then please select your interests)
+    <p> Interest: <br>
+        <button ng-click="i319()">Com S 319</button>
+        <button ng-click="i309()">Com S 309</button>
+        <button ng-click="i363()">Com S 363</button>
+		<br><br>
+		<br> (If you already filled out the form and are no longer interested, then please select below)
+		<br><br> No Interest: <br>
+		<button ng-click="d319()">Com S 319</button>
+        <button ng-click="d309()">Com S 309</button>
+        <button ng-click="d363()">Com S 363</button>
+    </p>
+    <div>Interest in Com S 319: {{classes.coms319[0]}}</div>
+    <div>Interest in Com S 309: {{classes.coms309}}</div>
+    <div>Interest in Com S 363: {{classes.coms363}}</div>
+
+    <div>Total Interest in Com S Courses: {{classes.totalInterest}}</div>
+
+    <script src="angular.min.js"></script>
+    <script src="deepWatch.js"></script>
+</body>
+</html>
+
+
+<script src="StudentDirectory.js"></script>
