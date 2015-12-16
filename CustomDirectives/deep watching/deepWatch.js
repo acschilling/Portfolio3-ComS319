@@ -8,6 +8,11 @@ app.controller('deepWatchCtrl', function ($scope, $log) {
     classes.coms363 = 0;
     classes.totalInterest = 0;
     $scope.classes = classes;
+	
+	$scope.$watch('classes.coms319[0]');
+	$scope.$watch('classes.coms309');
+	$scope.$watch('classes.coms363');
+    $scope.$watchCollection("classes.coms319");
 
     $scope.calcTotal = function () {
         $log.log('calling calcTotal');
@@ -28,14 +33,23 @@ app.controller('deepWatchCtrl', function ($scope, $log) {
 	
 	 $scope.d319 = function () {
         $scope.classes.coms319[0]--;
+		if ($scope.classes.coms319[0] < 0) {
+			$scope.classes.coms319[0] = 0;
+		}
     };
 
     $scope.d309 = function () {
         $scope.classes.coms309--;
+		if ($scope.classes.coms309 < 0) {
+			$scope.classes.coms309 = 0;
+		}
     };
 
     $scope.d363 = function () {
         $scope.classes.coms363--;
+		if ($scope.classes.coms363 < 0) {
+			$scope.classes.coms363 = 0;
+		}
     };
     $scope.$watch('classes', $scope.calcTotal, true);
 });
